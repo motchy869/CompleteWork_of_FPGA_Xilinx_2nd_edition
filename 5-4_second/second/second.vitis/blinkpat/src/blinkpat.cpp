@@ -55,24 +55,13 @@ int g_blinkPattern = 0; /* 0 or 1 */
 int led_rgb(const int blinkPattern, const int cnt) {
     int led;
 
-    if (blinkPattern == 0) {
-        switch (cnt%5) {
-            case 0: led = 4; break;
-            case 1: led = 2; break;
-            case 2: led = 1; break;
-            case 3: led = 7; break;
-            case 4: led = 0; break;
-            default: led = 0; break;
-        }
-    } else {
-        switch (cnt%5) {
-            case 0: led = 0b110; break;
-            case 1: led = 0b011; break;
-            case 2: led = 0b101; break;
-            case 3: led = 0b111; break;
-            case 4: led = 0b000; break;
-            default: led = 0b000; break;
-        }
+    switch (cnt%5) {
+        case 0: led = blinkPattern ? 0b110 : 0b100; break;
+        case 1: led = blinkPattern ? 0b011 : 0b010; break;
+        case 2: led = blinkPattern ? 0b101 : 0b001; break;
+        case 3: led = 0b111; break;
+        case 4: led = 0b000; break;
+        default: led = 0b000; break;
     }
 
     return led;
