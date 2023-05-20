@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="chardisp_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="chardisp_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2,737,658.455 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,738,103.856 ns"></ZoomEndTime>
+      <Cursor1Time time="2,737,952.777 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="246"></NameColumnWidth>
+      <ValueColumnWidth column_width="136"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="20" />
+   <wvobject fp_name="/chardisp_tb/PCK" type="logic">
+      <obj_property name="ElementShortName">PCK</obj_property>
+      <obj_property name="ObjectShortName">PCK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/hcnt" type="array">
+      <obj_property name="ElementShortName">hcnt[9:0]</obj_property>
+      <obj_property name="ObjectShortName">hcnt[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/i_hcnt" type="array">
+      <obj_property name="ElementShortName">i_hcnt[9:0]</obj_property>
+      <obj_property name="ObjectShortName">i_hcnt[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/hchacnt" type="array">
+      <obj_property name="ElementShortName">hchacnt[6:0]</obj_property>
+      <obj_property name="ObjectShortName">hchacnt[6:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/hdotcnt" type="array">
+      <obj_property name="ElementShortName">hdotcnt[2:0]</obj_property>
+      <obj_property name="ObjectShortName">hdotcnt[2:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/vcnt" type="array">
+      <obj_property name="ElementShortName">vcnt[9:0]</obj_property>
+      <obj_property name="ObjectShortName">vcnt[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/i_vcnt" type="array">
+      <obj_property name="ElementShortName">i_vcnt[9:0]</obj_property>
+      <obj_property name="ObjectShortName">i_vcnt[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/vcharcnt" type="array">
+      <obj_property name="ElementShortName">vcharcnt[5:0]</obj_property>
+      <obj_property name="ObjectShortName">vcharcnt[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/vdotcnt" type="array">
+      <obj_property name="ElementShortName">vdotcnt[2:0]</obj_property>
+      <obj_property name="ObjectShortName">vdotcnt[2:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/vramaddr" type="array">
+      <obj_property name="ElementShortName">vramaddr[11:0]</obj_property>
+      <obj_property name="ObjectShortName">vramaddr[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/vramout" type="array">
+      <obj_property name="ElementShortName">vramout[23:0]</obj_property>
+      <obj_property name="ObjectShortName">vramout[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/cgout" type="array">
+      <obj_property name="ElementShortName">cgout[7:0]</obj_property>
+      <obj_property name="ObjectShortName">cgout[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/shregld" type="logic">
+      <obj_property name="ElementShortName">shregld</obj_property>
+      <obj_property name="ObjectShortName">shregld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/shreg" type="array">
+      <obj_property name="ElementShortName">shreg[7:0]</obj_property>
+      <obj_property name="ObjectShortName">shreg[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/VGA_R" type="array">
+      <obj_property name="ElementShortName">VGA_R[3:0]</obj_property>
+      <obj_property name="ObjectShortName">VGA_R[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/VGA_G" type="array">
+      <obj_property name="ElementShortName">VGA_G[3:0]</obj_property>
+      <obj_property name="ObjectShortName">VGA_G[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/VGA_B" type="array">
+      <obj_property name="ElementShortName">VGA_B[3:0]</obj_property>
+      <obj_property name="ObjectShortName">VGA_B[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/hdispen" type="logic">
+      <obj_property name="ElementShortName">hdispen</obj_property>
+      <obj_property name="ObjectShortName">hdispen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/chardisp_inst/vdispen" type="logic">
+      <obj_property name="ElementShortName">vdispen</obj_property>
+      <obj_property name="ObjectShortName">vdispen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/chardisp_tb/VGA_DE" type="logic">
+      <obj_property name="ElementShortName">VGA_DE</obj_property>
+      <obj_property name="ObjectShortName">VGA_DE</obj_property>
+   </wvobject>
+</wave_config>

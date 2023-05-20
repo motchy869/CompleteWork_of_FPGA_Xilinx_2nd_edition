@@ -5,7 +5,9 @@ My training sandbox for a great book "FPGAプログラミング大全 Xilinx 編
 Environment:
 
 * OS: Windows 11 Pro 22H2
-* IDE: Xilinx Vivado 2022.2
+* IDE:
+  * section 1 to 6: Xilinx Vivado 2022.2
+  * section >=7: Xilinx Vivado 2023.1
 
 Notable features:
 
