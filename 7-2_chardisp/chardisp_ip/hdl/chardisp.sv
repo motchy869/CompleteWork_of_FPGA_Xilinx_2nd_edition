@@ -35,13 +35,13 @@ syncgen syncgen_inst(
 );
 
 /* Convert count value for internel reference. */
-wire [9:0] i_hcnt = hcnt - HFRONT - HWIDTH - HBACK + $bits(hcnt)'(8);
-wire [9:0] i_vcnt = vcnt - VFRONT - VWIDTH - VBACK - $bits(vcnt)'(40);
+(* mark_debug = "true" *) wire [9:0] i_hcnt = hcnt - HFRONT - HWIDTH - HBACK + $bits(hcnt)'(8);
+(* mark_debug = "true" *) wire [9:0] i_vcnt = vcnt - VFRONT - VWIDTH - VBACK - $bits(vcnt)'(40);
 
 /* VRAM signals */
-wire [23:0] vramout;
+(* mark_debug = "true" *) wire [23:0] vramout;
 wire [11:0] addra;
-wire [11:0] vramaddr;
+(* mark_debug = "true" *) wire [11:0] vramaddr;
 
 assign addra = (RDEN) ? RDADDR[2+:$bits(addra)] : WRADDR[2+:$bits(addra)];
 assign RDDATA[31-:8] = 8'h00;
@@ -80,7 +80,7 @@ CGROM cgrom_inst(
 assign vramaddr = (vcharcnt << 6) + (vcharcnt << 4) + hchacnt; /* 80 = 64 + 16 = 1<<6 + 1<<4 */
 
 /* shift register */
-reg [7:0] shreg;
+(* mark_debug = "true" *) reg [7:0] shreg;
 wire shregld = (hdotcnt==$bits(hdotcnt)'(6)) && i_hcnt<$bits(i_hcnt)'(640);
 
 always @(posedge PCK) begin

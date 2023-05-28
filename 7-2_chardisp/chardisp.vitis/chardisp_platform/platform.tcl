@@ -16,3 +16,6 @@ platform write
 platform generate -domains 
 platform active {chardisp_platform}
 platform generate
+platform active {chardisp_platform}
+platform config -updatehw {C:/Users/motchy/Documents/GitHub/CompleteWork_of_FPGA_Xilinx_2nd_edition/7-2_chardisp/chardisp.vitis/design_1_wrapper.xsa}
+platform generate -domains 

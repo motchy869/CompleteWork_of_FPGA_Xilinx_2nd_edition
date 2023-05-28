@@ -2,9 +2,10 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "CGROM",
+    "cell_name": "chardisp_ip_v1_0_S00_AXI_inst/chardisp_inst/cgrom_inst",
     "component_reference": "xilinx.com:ip:blk_mem_gen:8.4",
     "ip_revision": "6",
-    "gen_directory": "../../../../../../../../../users/motchy/documents/github/completework_of_fpga_xilinx_2nd_edition/7-2_chardisp/chardisp.tmp/chardisp_ip_v1_0_v1_0_project/chardisp_ip_v1_0_v1_0_project.gen/sources_1/ip/CGROM",
+    "gen_directory": "../../../../../../../../../users/motchy/documents/github/completework_of_fpga_xilinx_2nd_edition/7-2_chardisp/chardisp.tmp/chardisp_ip_v1_0_project/chardisp_ip_v1_0_project.gen/sources_1/ip/CGROM",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "CGROM", "resolve_type": "user", "usage": "all" } ],
@@ -174,7 +175,7 @@
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
         "IPREVISION": [ { "value": "6" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../../../../users/motchy/documents/github/completework_of_fpga_xilinx_2nd_edition/7-2_chardisp/chardisp.tmp/chardisp_ip_v1_0_v1_0_project/chardisp_ip_v1_0_v1_0_project.gen/sources_1/ip/CGROM" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../../../../users/motchy/documents/github/completework_of_fpga_xilinx_2nd_edition/7-2_chardisp/chardisp.tmp/chardisp_ip_v1_0_project/chardisp_ip_v1_0_project.gen/sources_1/ip/CGROM" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
         "SWVERSION": [ { "value": "2023.1" } ],

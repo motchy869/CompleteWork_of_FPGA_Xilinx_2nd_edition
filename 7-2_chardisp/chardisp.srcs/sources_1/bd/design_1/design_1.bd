@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x7EA12D77CC84BD6C",
+      "boundary_crc": "0x7EA12D77B37ACB76",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../chardisp.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -12,14 +12,14 @@
     },
     "design_tree": {
       "processing_system7_0": "",
-      "chardisp_ip_0": "",
       "ps7_0_axi_periph": {
         "s00_couplers": {
           "auto_pc": ""
         }
       },
       "rst_ps7_0_100M": "",
-      "hdmi_vga_0": ""
+      "hdmi_vga_0": "",
+      "chardisp_ip_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1353,19 +1353,6 @@
           }
         }
       },
-      "chardisp_ip_0": {
-        "vlnv": "xilinx.com:user:chardisp_ip:1.0",
-        "xci_name": "design_1_chardisp_ip_0_0",
-        "xci_path": "ip\\design_1_chardisp_ip_0_0\\design_1_chardisp_ip_0_0.xci",
-        "inst_hier_path": "chardisp_ip_0",
-        "interface_ports": {
-          "s00_axi": {
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "mode": "Slave",
-            "memory_map_ref": "s00_axi"
-          }
-        }
-      },
       "ps7_0_axi_periph": {
         "vlnv": "xilinx.com:ip:axi_interconnect:2.1",
         "xci_path": "ip\\design_1_ps7_0_axi_periph_0\\design_1_ps7_0_axi_periph_0.xci",
@@ -1590,6 +1577,19 @@
         "xci_name": "design_1_hdmi_vga_0_0",
         "xci_path": "ip\\design_1_hdmi_vga_0_0\\design_1_hdmi_vga_0_0.xci",
         "inst_hier_path": "hdmi_vga_0"
+      },
+      "chardisp_ip_0": {
+        "vlnv": "xilinx.com:user:chardisp_ip:1.0",
+        "xci_name": "design_1_chardisp_ip_0_0",
+        "xci_path": "ip\\design_1_chardisp_ip_0_0\\design_1_chardisp_ip_0_0.xci",
+        "inst_hier_path": "chardisp_ip_0",
+        "interface_ports": {
+          "s00_axi": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Slave",
+            "memory_map_ref": "s00_axi"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -1691,9 +1691,9 @@
           "processing_system7_0/M_AXI_GP0_ACLK",
           "ps7_0_axi_periph/S00_ACLK",
           "rst_ps7_0_100M/slowest_sync_clk",
-          "chardisp_ip_0/s00_axi_aclk",
           "ps7_0_axi_periph/M00_ACLK",
-          "ps7_0_axi_periph/ACLK"
+          "ps7_0_axi_periph/ACLK",
+          "chardisp_ip_0/s00_axi_aclk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -1707,9 +1707,9 @@
         "ports": [
           "rst_ps7_0_100M/peripheral_aresetn",
           "ps7_0_axi_periph/S00_ARESETN",
-          "chardisp_ip_0/s00_axi_aresetn",
           "ps7_0_axi_periph/M00_ARESETN",
-          "ps7_0_axi_periph/ARESETN"
+          "ps7_0_axi_periph/ARESETN",
+          "chardisp_ip_0/s00_axi_aresetn"
         ]
       }
     },

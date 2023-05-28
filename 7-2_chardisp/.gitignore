@@ -45,14 +45,7 @@ unisims
 *.dll
 *.lib
 
-## dirs
-vivado.cache/
-vivado.hw/
-vivado.ip_user_files/
-vivado.runs/
-vivado.sim/
-
-###### for Xilinx Vivado|ISE
+## dirs for Xilinx Vivado
 .Xil/
 .cache/
 fsm_encoding.os
@@ -63,13 +56,14 @@ hs_err_pid*
 xelab.*
 xsim.*
 xvlog.*
-*.cache
-*.gen
-*.sim
-*.runs
-*.hw
 *.backup.*
+*.cache
 *.debug
+*.gen
+*.hw
+*.ip_user_files
+*.runs
+*.sim
 
 ## checkpoint files
 *.dcp
