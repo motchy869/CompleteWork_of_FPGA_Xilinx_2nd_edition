@@ -1,0 +1,63 @@
+{
+  "schema": "xilinx.com:schema:json_instance:1.0",
+  "ip_inst": {
+    "xci_name": "design_1_hdmi_vga_0_0",
+    "cell_name": "hdmi_vga_0",
+    "component_reference": "xilinx.com:user:hdmi_vga:1.0",
+    "ip_revision": "7",
+    "gen_directory": "../../../../../../chardisp.gen/sources_1/bd/design_1/ip/design_1_hdmi_vga_0_0",
+    "parameters": {
+      "component_parameters": {
+        "Component_Name": [ { "value": "design_1_hdmi_vga_0_0", "resolve_type": "user", "usage": "all" } ],
+        "kClkRange": [ { "value": "5", "resolve_type": "user", "format": "long", "usage": "all" } ]
+      },
+      "model_parameters": {
+        "kClkRange": [ { "value": "5", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+      },
+      "project_parameters": {
+        "ARCHITECTURE": [ { "value": "zynq" } ],
+        "BASE_BOARD_PART": [ { "value": "digilentinc.com:zybo-z7-20:part0:1.1" } ],
+        "BOARD_CONNECTIONS": [ { "value": "" } ],
+        "DEVICE": [ { "value": "xc7z020" } ],
+        "PACKAGE": [ { "value": "clg400" } ],
+        "PREFHDL": [ { "value": "VERILOG" } ],
+        "SILICON_REVISION": [ { "value": "" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
+        "STATIC_POWER": [ { "value": "" } ],
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
+      },
+      "runtime_parameters": {
+        "IPCONTEXT": [ { "value": "IP_Integrator" } ],
+        "IPREVISION": [ { "value": "7" } ],
+        "MANAGED": [ { "value": "TRUE" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../chardisp.gen/sources_1/bd/design_1/ip/design_1_hdmi_vga_0_0" } ],
+        "SELECTEDSIMMODEL": [ { "value": "" } ],
+        "SHAREDDIR": [ { "value": "../../ipshared" } ],
+        "SWVERSION": [ { "value": "2023.1" } ],
+        "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
+      }
+    },
+    "boundary": {
+      "ports": {
+        "nRST": [ { "direction": "in" } ],
+        "PCK": [ { "direction": "in" } ],
+        "IN_VGA_R": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "IN_VGA_G": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "IN_VGA_B": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "IN_VGA_HS": [ { "direction": "in" } ],
+        "IN_VGA_VS": [ { "direction": "in" } ],
+        "IN_VGA_DE": [ { "direction": "in" } ],
+        "HDMI_CLK_N": [ { "direction": "out" } ],
+        "HDMI_CLK_P": [ { "direction": "out" } ],
+        "HDMI_N": [ { "direction": "out", "size_left": "2", "size_right": "0" } ],
+        "HDMI_P": [ { "direction": "out", "size_left": "2", "size_right": "0" } ],
+        "VGA_R": [ { "direction": "out", "size_left": "3", "size_right": "0" } ],
+        "VGA_G": [ { "direction": "out", "size_left": "3", "size_right": "0" } ],
+        "VGA_B": [ { "direction": "out", "size_left": "3", "size_right": "0" } ],
+        "VGA_HS": [ { "direction": "out" } ],
+        "VGA_VS": [ { "direction": "out" } ]
+      }
+    }
+  }
+}

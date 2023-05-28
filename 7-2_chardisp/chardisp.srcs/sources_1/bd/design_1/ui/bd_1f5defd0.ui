@@ -1,0 +1,44 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0346",
+   "Default View_TopLeft":"10,-40",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 4 -x 1090 -y 60 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 4 -x 1090 -y 80 -defaultsOSRD
+preplace port port-id_HDMI_CLK_N -pg 1 -lvl 4 -x 1090 -y 280 -defaultsOSRD
+preplace port port-id_HDMI_CLK_P -pg 1 -lvl 4 -x 1090 -y 300 -defaultsOSRD
+preplace portBus HDMI_N -pg 1 -lvl 4 -x 1090 -y 320 -defaultsOSRD
+preplace portBus HDMI_P -pg 1 -lvl 4 -x 1090 -y 340 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -x 590 -y 110 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 1 -x 200 -y 350 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 200 -y 120 -defaultsOSRD
+preplace inst hdmi_vga_0 -pg 1 -lvl 3 -x 940 -y 360 -defaultsOSRD
+preplace inst chardisp_ip_0 -pg 1 -lvl 2 -x 590 -y 370 -defaultsOSRD
+preplace netloc chardisp_ip_0_PCK 1 2 1 N 310
+preplace netloc chardisp_ip_0_VGA_B 1 2 1 N 370
+preplace netloc chardisp_ip_0_VGA_DE 1 2 1 N 430
+preplace netloc chardisp_ip_0_VGA_G 1 2 1 N 350
+preplace netloc chardisp_ip_0_VGA_HS 1 2 1 N 390
+preplace netloc chardisp_ip_0_VGA_R 1 2 1 N 330
+preplace netloc chardisp_ip_0_VGA_VS 1 2 1 N 410
+preplace netloc hdmi_vga_0_HDMI_CLK_N 1 3 1 N 280
+preplace netloc hdmi_vga_0_HDMI_CLK_P 1 3 1 N 300
+preplace netloc hdmi_vga_0_HDMI_N 1 3 1 NJ 320
+preplace netloc hdmi_vga_0_HDMI_P 1 3 1 NJ 340
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 3 20 20 390 220 790
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 3 30 220 380 240 810
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 0 2 30 470 370
+preplace netloc processing_system7_0_DDR 1 2 2 N 60 N
+preplace netloc processing_system7_0_FIXED_IO 1 2 2 N 80 N
+preplace netloc processing_system7_0_M_AXI_GP0 1 0 3 30 230 N 230 800
+preplace netloc ps7_0_axi_periph_M00_AXI 1 1 1 N 350
+levelinfo -pg 1 0 200 590 940 1090
+pagesize -pg 1 -db -bbox -sgen 0 0 1250 500
+"
+}
+{
+   "da_axi4_cnt":"1",
+   "da_ps7_cnt":"1"
+}

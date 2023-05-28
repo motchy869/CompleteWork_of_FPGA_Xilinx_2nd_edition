@@ -1,0 +1,58 @@
+#include "xparameters.h"
+#include "xil_printf.h"
+
+#define FORCE_INLINE __attribute__((always_inline)) inline
+
+#pragma pack(1)
+struct VramEntry {
+    volatile uint8_t charCode;
+    volatile unsigned b: 4;
+    volatile unsigned g: 4;
+    volatile unsigned r: 4;
+    volatile unsigned reserved: 4;
+};
+#pragma pack()
+
+static_assert(sizeof(VramEntry) == 3, "The size of `VramEntry` is not 3.");
+
+VramEntry *const g_vramPtr = reinterpret_cast<VramEntry *>(XPAR_CHARDISP_IP_0_BASEADDR);
+VramEntry (&VRAM)[4000] = reinterpret_cast<VramEntry (&)[4000]>(*g_vramPtr);
+
+void showLines(const int numLines) {
+    for (int i=0; i<numLines; ++i) {
+        volatile const VramEntry entry = VRAM[i];
+        xil_printf("VRAM[%d]: r=%02x, g=%02x, b=%02x, charCode=%02x\n", i, entry.r, entry.g, entry.b, entry.charCode);
+    }
+}
+
+int main() {
+    /* Display characters in various colors. */
+    for (int i=0; i<4000; ++i) {
+        const VramEntry entry = {
+            .charCode = static_cast<uint8_t>(i),
+            .b = static_cast<unsigned int>(i&0xf),
+            .g = static_cast<unsigned int>((i>>4)&0xf),
+            .r = static_cast<unsigned int>((i>>8)&0xf)
+        };
+        g_vramPtr[i] = entry;
+    }
+
+    showLines(40);
+
+    /* Set all characters to 'A'. Set a break point here. */
+    for (int i=0; i<4000; ++i) {
+        g_vramPtr[i].charCode = 'A';
+    }
+
+    showLines(40);
+
+    /* Scroll and clear the bottom line. Set a break point here. */
+    for (int i=0; i<3920; ++i) {
+        g_vramPtr[i] = g_vramPtr[i+80];
+    }
+    for (int i=3920; i<4000; ++i) {
+        g_vramPtr[i].charCode = ' ';
+    }
+
+    return 0;
+}
