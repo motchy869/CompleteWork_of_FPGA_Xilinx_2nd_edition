@@ -1,0 +1,6 @@
+/export/
+/logs/
+/.log/
+*.d
+*.elf
+*.o
