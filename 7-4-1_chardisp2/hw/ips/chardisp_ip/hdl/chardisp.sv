@@ -18,6 +18,15 @@ module chardisp(
     output reg VGA_DE
 );
 
+typedef struct packed {
+    logic [1:0] reserved_0;
+    logic blink;
+    logic inversion;
+    logic [11:0] color;
+    logic reserved_1;
+    logic [6:0] charCode;
+} VramEntry;
+
 /* load VGA (640x480) parameters */
 `include "vga_param.svh"
 
@@ -39,7 +48,8 @@ syncgen syncgen_inst(
 (* mark_debug = "true" *) wire [9:0] i_vcnt = vcnt - VFRONT - VWIDTH - VBACK - $bits(vcnt)'(40);
 
 /* VRAM signals */
-(* mark_debug = "true" *) wire [23:0] vramout;
+//(* mark_debug = "true" *) wire [23:0] vramout;
+(* mark_debug = "true" *) VramEntry vramout;
 wire [11:0] addra;
 (* mark_debug = "true" *) wire [11:0] vramaddr;
 
@@ -62,21 +72,21 @@ VRAM vram_inst(
 );
 
 /* VRAM-related functions */
-function [6:0] getCharFromVramOutput(input [23:0] vramout);
-    getCharFromVramOutput = vramout[6:0];
-endfunction
+// function [6:0] getCharFromVramOutput(input [23:0] vramout);
+//     getCharFromVramOutput = vramout[6:0];
+// endfunction
 
-function [11:0] getColorFromVramOutput(input [23:0] vramout);
-    getColorFromVramOutput = vramout[8+:12];
-endfunction
+// function [11:0] getColorFromVramOutput(input [23:0] vramout);
+//     getColorFromVramOutput = vramout[8+:12];
+// endfunction
 
-function getInvFlgFromVramOutput(input [23:0] vramout);
-    getInvFlgFromVramOutput = vramout[20];
-endfunction
+// function getInvFlgFromVramOutput(input [23:0] vramout);
+//     getInvFlgFromVramOutput = vramout[20];
+// endfunction
 
-function getBlinkFlgFromVramOutput(input [23:0] vramout);
-    getBlinkFlgFromVramOutput = vramout[21];
-endfunction
+// function getBlinkFlgFromVramOutput(input [23:0] vramout);
+//     getBlinkFlgFromVramOutput = vramout[21];
+// endfunction
 
 
 wire [6:0] hchacnt = i_hcnt[3+:7]; /* horizontal character count */
@@ -88,7 +98,7 @@ wire [7:0] cgout;
 
 /* Connect CGROM. */
 CGROM cgrom_inst(
-    .addra({vramout[6:0], vdotcnt}),
+    .addra({vramout.charCode, vdotcnt}),
     .douta(cgout),
     .clka(PCK)
 );
@@ -129,9 +139,12 @@ always_ff @(posedge PCK) begin
         inversion <= 1'b0;
         blink <= 1'b0;
     end else if (shregld) begin
-        color <= getColorFromVramOutput(vramout);
-        inversion <= getInvFlgFromVramOutput(vramout);
-        blink <= getBlinkFlgFromVramOutput(vramout);
+        // color <= getColorFromVramOutput(vramout);
+        // inversion <= getInvFlgFromVramOutput(vramout);
+        // blink <= getBlinkFlgFromVramOutput(vramout);
+        color <= vramout.color;
+        inversion <= vramout.inversion;
+        blink <= vramout.blink;
     end
 end
 
