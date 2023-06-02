@@ -28,6 +28,8 @@ proc checkRequiredFiles { origin_dir} {
   }
 
   set paths [list \
+ "[file normalize "$origin_dir/[file normalize "$origin_dir/../../../Digilent-vivado-library"]"]"\
+ "[file normalize "$origin_dir/[file normalize "$origin_dir/../../common"]"]"\
  "[file normalize "$origin_dir/[file normalize "$origin_dir/ips"]"]"\
   ]
   foreach ipath $paths {
@@ -154,13 +156,12 @@ set_property -name "simulator.xsim_gcc_version" -value "9.3.0" -objects $obj
 set_property -name "simulator.xsim_version" -value "2023.1" -objects $obj
 set_property -name "simulator_language" -value "Mixed" -objects $obj
 set_property -name "sim_compile_state" -value "1" -objects $obj
-set_property -name "webtalk.activehdl_export_sim" -value "9" -objects $obj
-set_property -name "webtalk.modelsim_export_sim" -value "9" -objects $obj
-set_property -name "webtalk.questa_export_sim" -value "9" -objects $obj
-set_property -name "webtalk.riviera_export_sim" -value "9" -objects $obj
-set_property -name "webtalk.vcs_export_sim" -value "9" -objects $obj
-set_property -name "webtalk.xcelium_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.xsim_export_sim" -value "9" -objects $obj
+set_property -name "webtalk.activehdl_export_sim" -value "10" -objects $obj
+set_property -name "webtalk.modelsim_export_sim" -value "10" -objects $obj
+set_property -name "webtalk.questa_export_sim" -value "10" -objects $obj
+set_property -name "webtalk.riviera_export_sim" -value "10" -objects $obj
+set_property -name "webtalk.vcs_export_sim" -value "10" -objects $obj
+set_property -name "webtalk.xsim_export_sim" -value "10" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC XPM_MEMORY" -objects $obj
 
 # Create 'sources_1' fileset (if not found)
@@ -171,7 +172,7 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set IP repository paths
 set obj [get_filesets sources_1]
 if { $obj != {} } {
-   set_property "ip_repo_paths" "[file normalize "$origin_dir/ips"]" $obj
+   set_property "ip_repo_paths" "[file normalize "$origin_dir/../../../Digilent-vivado-library"] [file normalize "$origin_dir/../../common"] [file normalize "$origin_dir/ips"]" $obj
 
    # Rebuild user ip_repo's index before adding any source files
    update_ip_catalog -rebuild
