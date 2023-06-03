@@ -15,7 +15,6 @@ void printLinesToUart(const int numLines) {
 int main() {
     HdmiPrinter::CursorPos cursorPos;
     HdmiPrinter printer(50, 80);
-    printer.setColor(0xf, 0xf, 0xf);
 
     /* test 0: one character */
     printer.printOneChar('a');
