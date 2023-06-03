@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="char_test3" location="D:/workspace/Xilinx/7-4-1_chardisp2/sw/vitis_project/char_test3" platform="D:/workspace/Xilinx/7-4-1_chardisp2/sw/vitis_project/chardisp2_platform/export/chardisp2_platform/chardisp2_platform.xpfm" platformUID="xilinx:zybo-z7-20::0.0(custom)" systemProject="char_test3_system" sysConfig="chardisp2_platform" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" language="CPP" mssSignature="2c8770926cebc7f9ea8f422c87a1343f">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1711885321">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.1043103123" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

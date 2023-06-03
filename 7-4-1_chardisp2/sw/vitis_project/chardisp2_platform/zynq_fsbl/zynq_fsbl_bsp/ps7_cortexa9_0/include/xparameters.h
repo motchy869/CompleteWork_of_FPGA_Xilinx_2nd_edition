@@ -126,11 +126,6 @@
 /******************************************************************/
 
 
-/* Peripheral Definitions for peripheral CHARDISP_IP_V1_0_0 */
-#define XPAR_CHARDISP_IP_V1_0_0_BASEADDR 0x40000000
-#define XPAR_CHARDISP_IP_V1_0_0_HIGHADDR 0x4000FFFF
-
-
 /* Peripheral Definitions for peripheral PS7_AFI_0 */
 #define XPAR_PS7_AFI_0_S_AXI_BASEADDR 0xF8008000
 #define XPAR_PS7_AFI_0_S_AXI_HIGHADDR 0xF8008FFF
@@ -223,12 +218,14 @@
 #define XPAR_PS7_SLCR_0_S_AXI_HIGHADDR 0xF8000FFF
 
 
+/* Peripheral Definitions for peripheral CHARDISP_IP_0 */
+#define XPAR_CHARDISP_IP_0_BASEADDR 0x40000000
+#define XPAR_CHARDISP_IP_0_HIGHADDR 0x4000FFFF
+
+
 /******************************************************************/
 
 
-/* Canonical Definitions for peripheral CHARDISP_IP_V1_0_0 */
-#define XPAR_CHARDISP_IP_V1_0_BASEADDR 0x40000000
-#define XPAR_CHARDISP_IP_V1_0_HIGHADDR 0x4000FFFF
 
 
 

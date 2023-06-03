@@ -1,3 +1,9 @@
 /.analysis/
 /.metadata/
 /IDE.log/
+
+*.bit
+*.d
+*.elf
+*.o
+*.xsa

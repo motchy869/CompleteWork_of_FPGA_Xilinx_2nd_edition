@@ -25,3 +25,9 @@ platform config -updatehw {C:/Users/motchy/Documents/GitHub/CompleteWork_of_FPGA
 platform generate -domains 
 platform config -updatehw {C:/Users/motchy/Documents/GitHub/CompleteWork_of_FPGA_Xilinx_2nd_edition/7-4-1_chardisp2/hw/vivado_project/design_1_wrapper.xsa}
 platform generate -domains 
+platform active {chardisp2_platform}
+platform config -updatehw {C:/Users/motchy/Documents/GitHub/CompleteWork_of_FPGA_Xilinx_2nd_edition/7-4-1_chardisp2/hw/vivado_project/design_1_wrapper.xsa}
+platform generate -domains standalone_domain,zynq_fsbl 
+platform generate -domains 
+platform clean
+platform generate
