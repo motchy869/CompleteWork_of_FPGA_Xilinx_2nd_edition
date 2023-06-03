@@ -21,7 +21,9 @@ class HdmiPrinter {
     private:
         const uint8_t NUM_ROWS, NUM_COLS;
         CursorPos m_cursorPos = {0, 0}; /* current cursor position */
-        uint8_t m_r = 0, m_g = 0, m_b = 0;
+        uint8_t m_r = 0xf, m_g = 0xf, m_b = 0xf;
         bool m_inversion = false, m_blink = false;
+        void writeCursorMark();
+        void eraseCursorMark();
         void setCursorPos(const uint8_t row, const uint8_t col);
 };
