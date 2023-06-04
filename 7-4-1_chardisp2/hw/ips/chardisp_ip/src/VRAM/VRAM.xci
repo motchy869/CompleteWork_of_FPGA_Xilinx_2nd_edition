@@ -5,7 +5,7 @@
     "cell_name": "chardisp_ip_v1_0_S00_AXI_inst/chardisp_inst/vram_inst",
     "component_reference": "xilinx.com:ip:blk_mem_gen:8.4",
     "ip_revision": "6",
-    "gen_directory": "../../../../../../../../../../../users/motchy/documents/github/completework_of_fpga_xilinx_2nd_edition/7-4-1_chardisp2/hw/vivado_project/chardisp2.tmp/chardisp_ip_v1_0_project/chardisp_ip_v1_0_project.gen/sources_1/ip/VRAM",
+    "gen_directory": "../../../../../../../../../../../users/motchy/documents/github/completework_of_fpga_xilinx_2nd_edition/7-4-2_chardisp3/fpga/top/vivado_project/chardisp3_top.tmp/chardisp_ip_v1_0_project/chardisp_ip_v1_0_project.gen/sources_1/ip/VRAM",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "VRAM", "resolve_type": "user", "usage": "all" } ],
@@ -175,7 +175,7 @@
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
         "IPREVISION": [ { "value": "6" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../../../../../../users/motchy/documents/github/completework_of_fpga_xilinx_2nd_edition/7-4-1_chardisp2/hw/vivado_project/chardisp2.tmp/chardisp_ip_v1_0_project/chardisp_ip_v1_0_project.gen/sources_1/ip/VRAM" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../../../../../../users/motchy/documents/github/completework_of_fpga_xilinx_2nd_edition/7-4-2_chardisp3/fpga/top/vivado_project/chardisp3_top.tmp/chardisp_ip_v1_0_project/chardisp_ip_v1_0_project.gen/sources_1/ip/VRAM" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
         "SWVERSION": [ { "value": "2023.1" } ],
