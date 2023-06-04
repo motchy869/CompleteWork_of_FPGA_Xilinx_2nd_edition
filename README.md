@@ -11,6 +11,7 @@ Environment:
 
 Notable features:
 
-* hazard elimination for `RST` signal using double FF
+* Utilize SystemVerilog modern syntaxes.
+* some hazard elimination for `RST` signal using double FF
 * Specify necessary false-paths in XDC file.
-* Resolved some warnings.
+* Resolved some timing warnings.
