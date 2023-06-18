@@ -11,6 +11,8 @@
         "internal-terms": true // Disable the `internal-terms` dictionary
     },
     "cSpell.words": [
+        "FATFS",
+        "FRESULT",
         "VBLANK",
         "XPAR",
         "xpos",

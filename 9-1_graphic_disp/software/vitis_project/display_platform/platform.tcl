@@ -23,3 +23,14 @@ platform config -updatehw {D:/workspace/Xilinx/display/fpga/top/vivado_project/d
 platform generate -domains 
 platform config -updatehw {D:/workspace/Xilinx/9-1_graphics_disp/fpga/top/vivado_project/design_1_wrapper.xsa}
 platform generate -domains 
+platform active {display_platform}
+bsp reload
+bsp setlib -name xilffs -ver 5.0
+bsp write
+bsp reload
+catch {bsp regenerate}
+bsp config use_lfn "1"
+bsp write
+bsp reload
+catch {bsp regenerate}
+platform generate -domains standalone_domain 
