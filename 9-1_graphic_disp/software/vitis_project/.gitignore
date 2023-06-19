@@ -1,0 +1,10 @@
+/.analysis/
+/.metadata/
+/IDE.log
+
+*.a
+*.bit
+*.d
+*.elf
+*.o
+*.xsa

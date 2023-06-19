@@ -1,0 +1,21 @@
+{
+    "cSpell.dictionaryDefinitions": [],
+    "cSpell.customDictionaries": {
+        "project-words": {
+            "name": "project-words",
+            "path": "/mnt/c/Users/motchy/Documents/GitHub/ProgrammingWordDictionary/dict.txt",
+            "description": "Words used in this project",
+            "addWords": true
+        },
+        "custom": true, // Enable the `custom` dictionary
+        "internal-terms": true // Disable the `internal-terms` dictionary
+    },
+    "cSpell.words": [
+        "FATFS",
+        "FRESULT",
+        "VBLANK",
+        "XPAR",
+        "xpos",
+        "ypos"
+    ]
+}

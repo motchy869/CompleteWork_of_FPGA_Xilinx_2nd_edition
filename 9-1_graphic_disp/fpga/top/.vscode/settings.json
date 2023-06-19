@@ -1,0 +1,47 @@
+{
+    "cSpell.dictionaryDefinitions": [],
+    "cSpell.customDictionaries": {
+        "project-words": {
+            "name": "project-words",
+            "path": "C:/Users/motchy/Documents/GitHub/ProgrammingWordDictionary/dict.txt",
+            "description": "Words used in this project",
+            "addWords": true
+        },
+        "custom": true, // Enable the `custom` dictionary
+        "internal-terms": true // Disable the `internal-terms` dictionary
+    },
+    "cSpell.words": [
+        "ARST",
+        "CLKFBIN",
+        "CLKFBOUT",
+        "CLKFBOUTB",
+        "CLKIN",
+        "CLKOUT",
+        "DIVCLK",
+        "dout",
+        "HBACK",
+        "HCNT",
+        "hcntend",
+        "HFRONT",
+        "HPERIOD",
+        "hsend",
+        "hsstart",
+        "HWIDTH",
+        "meminit",
+        "MMCME",
+        "MULT",
+        "pckgen",
+        "prst",
+        "PWRDWN",
+        "syncgen",
+        "SYSCLK",
+        "VBACK",
+        "VBLANK",
+        "VCNT",
+        "VFRONT",
+        "VPERIOD",
+        "vsend",
+        "vsstart",
+        "VWIDTH"
+    ]
+}
