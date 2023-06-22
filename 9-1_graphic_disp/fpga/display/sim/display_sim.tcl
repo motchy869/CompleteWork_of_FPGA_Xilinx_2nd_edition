@@ -50,7 +50,6 @@ proc checkRequiredFiles { origin_dir} {
 
   set paths [list \
  "[file normalize "$origin_dir/[file normalize "$origin_dir/../../../../../Digilent-vivado-library"]"]"\
-   D:/workspace/genPur/common \
   ]
   foreach ipath $paths {
     if { ![file isdirectory $ipath] } {
@@ -193,7 +192,7 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set IP repository paths
 set obj [get_filesets sources_1]
 if { $obj != {} } {
-   set_property "ip_repo_paths" "[file normalize "$origin_dir/../../../../../Digilent-vivado-library"] D:/workspace/genPur/common" $obj
+   set_property "ip_repo_paths" "[file normalize "$origin_dir/../../../../../Digilent-vivado-library"]" $obj
 
    # Rebuild user ip_repo's index before adding any source files
    update_ip_catalog -rebuild
