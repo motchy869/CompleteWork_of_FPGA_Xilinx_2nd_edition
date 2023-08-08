@@ -18,16 +18,6 @@
 proc checkRequiredFiles { origin_dir} {
   set status true
   set files [list \
- "[file normalize "$origin_dir/vivado_project/display_xga.srcs/sources_1/ip/axi_gpio_0/axi_gpio_0.xci"]"\
-  ]
-  foreach ifile $files {
-    if { ![file isfile $ifile] } {
-      puts " Could not find local file $ifile "
-      set status false
-    }
-  }
-
-  set files [list \
  "[file normalize "$origin_dir/xdc/display.xdc"]"\
   ]
   foreach ifile $files {
@@ -200,27 +190,6 @@ set obj [get_filesets sources_1]
 set obj [get_filesets sources_1]
 set_property -name "dataflow_viewer_settings" -value "min_width=16" -objects $obj
 set_property -name "top" -value "design_1_wrapper" -objects $obj
-
-# Set 'sources_1' fileset object
-set obj [get_filesets sources_1]
-# Add local files from the original project (-no_copy_sources specified)
-set files [list \
- [file normalize "${origin_dir}/vivado_project/display_xga.srcs/sources_1/ip/axi_gpio_0/axi_gpio_0.xci" ]\
-]
-set added_files [add_files -fileset sources_1 $files]
-
-# Set 'sources_1' fileset file properties for remote files
-# None
-
-# Set 'sources_1' fileset file properties for local files
-set file "axi_gpio_0/axi_gpio_0.xci"
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property -name "generate_files_for_reference" -value "0" -objects $file_obj
-set_property -name "registered_with_manager" -value "1" -objects $file_obj
-if { ![get_property "is_locked" $file_obj] } {
-  set_property -name "synth_checkpoint_mode" -value "Singular" -objects $file_obj
-}
-
 
 # Create 'constrs_1' fileset (if not found)
 if {[string equal [get_filesets -quiet constrs_1] ""]} {
