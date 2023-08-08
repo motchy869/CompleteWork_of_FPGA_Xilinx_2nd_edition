@@ -18,6 +18,7 @@
 proc checkRequiredFiles { origin_dir} {
   set status true
   set files [list \
+ "[file normalize "$origin_dir/vivado_project/display_xga_sim.srcs/sources_1/ip/axi_vip_0/axi_vip_0.xci"]"\
  "[file normalize "$origin_dir/vivado_project/display_xga_sim.srcs/sources_1/ip/disp_fifo/disp_fifo.xci"]"\
   ]
   foreach ifile $files {
@@ -28,16 +29,15 @@ proc checkRequiredFiles { origin_dir} {
   }
 
   set files [list \
- "[file normalize "$origin_dir/src/display_xga/xga_param.svh"]"\
- "[file normalize "$origin_dir/src/display_xga/common_constants.sv"]"\
- "[file normalize "$origin_dir/src/display_xga/disp_ctrl.sv"]"\
- "[file normalize "$origin_dir/src/display_xga/disp_flag.sv"]"\
- "[file normalize "$origin_dir/src/display_xga/disp_out.sv"]"\
- "[file normalize "$origin_dir/src/display_xga/display_xga.sv"]"\
- "[file normalize "$origin_dir/src/display_xga/pckgen.sv"]"\
- "[file normalize "$origin_dir/src/display_xga/syncgen.sv"]"\
- "[file normalize "$origin_dir/src/display_xga/display_xga_wrap.v"]"\
- "[file normalize "$origin_dir/src/display_xga/xga_param.svh"]"\
+ "[file normalize "$origin_dir/../display_xga_ip/src/xga_param.svh"]"\
+ "[file normalize "$origin_dir/../display_xga_ip/src/common_constants.sv"]"\
+ "[file normalize "$origin_dir/../display_xga_ip/src/disp_ctrl.sv"]"\
+ "[file normalize "$origin_dir/../display_xga_ip/src/disp_flag.sv"]"\
+ "[file normalize "$origin_dir/../display_xga_ip/src/disp_out.sv"]"\
+ "[file normalize "$origin_dir/../display_xga_ip/src/display_xga.sv"]"\
+ "[file normalize "$origin_dir/../display_xga_ip/src/pckgen.sv"]"\
+ "[file normalize "$origin_dir/../display_xga_ip/src/syncgen.sv"]"\
+ "[file normalize "$origin_dir/../display_xga_ip/src/display_xga_wrap.v"]"\
  "[file normalize "$origin_dir/src/display_xga_tb.sv"]"\
   ]
   foreach ifile $files {
@@ -179,9 +179,8 @@ set_property -name "webtalk.modelsim_export_sim" -value "3" -objects $obj
 set_property -name "webtalk.questa_export_sim" -value "3" -objects $obj
 set_property -name "webtalk.riviera_export_sim" -value "3" -objects $obj
 set_property -name "webtalk.vcs_export_sim" -value "3" -objects $obj
-set_property -name "webtalk.xcelium_export_sim" -value "2" -objects $obj
 set_property -name "webtalk.xsim_export_sim" -value "3" -objects $obj
-set_property -name "webtalk.xsim_launch_sim" -value "21" -objects $obj
+set_property -name "webtalk.xsim_launch_sim" -value "1" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC XPM_MEMORY" -objects $obj
 
 # Create 'sources_1' fileset (if not found)
@@ -201,68 +200,81 @@ if { $obj != {} } {
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
 set files [list \
- [file normalize "${origin_dir}/src/display_xga/xga_param.svh"] \
- [file normalize "${origin_dir}/src/display_xga/common_constants.sv"] \
- [file normalize "${origin_dir}/src/display_xga/disp_ctrl.sv"] \
- [file normalize "${origin_dir}/src/display_xga/disp_flag.sv"] \
- [file normalize "${origin_dir}/src/display_xga/disp_out.sv"] \
- [file normalize "${origin_dir}/src/display_xga/display_xga.sv"] \
- [file normalize "${origin_dir}/src/display_xga/pckgen.sv"] \
- [file normalize "${origin_dir}/src/display_xga/syncgen.sv"] \
- [file normalize "${origin_dir}/src/display_xga/display_xga_wrap.v"] \
+ [file normalize "${origin_dir}/../display_xga_ip/src/xga_param.svh"] \
+ [file normalize "${origin_dir}/../display_xga_ip/src/common_constants.sv"] \
+ [file normalize "${origin_dir}/../display_xga_ip/src/disp_ctrl.sv"] \
+ [file normalize "${origin_dir}/../display_xga_ip/src/disp_flag.sv"] \
+ [file normalize "${origin_dir}/../display_xga_ip/src/disp_out.sv"] \
+ [file normalize "${origin_dir}/../display_xga_ip/src/display_xga.sv"] \
+ [file normalize "${origin_dir}/../display_xga_ip/src/pckgen.sv"] \
+ [file normalize "${origin_dir}/../display_xga_ip/src/syncgen.sv"] \
+ [file normalize "${origin_dir}/../display_xga_ip/src/display_xga_wrap.v"] \
 ]
 add_files -norecurse -fileset $obj $files
 
+# Add local files from the original project (-no_copy_sources specified)
+set files [list \
+ [file normalize "${origin_dir}/vivado_project/display_xga_sim.srcs/sources_1/ip/axi_vip_0/axi_vip_0.xci" ]\
+]
+set added_files [add_files -fileset sources_1 $files]
+
 # Set 'sources_1' fileset file properties for remote files
-set file "$origin_dir/src/display_xga/xga_param.svh"
+set file "$origin_dir/../display_xga_ip/src/xga_param.svh"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "Verilog Header" -objects $file_obj
 
-set file "$origin_dir/src/display_xga/common_constants.sv"
+set file "$origin_dir/../display_xga_ip/src/common_constants.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/src/display_xga/disp_ctrl.sv"
+set file "$origin_dir/../display_xga_ip/src/disp_ctrl.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/src/display_xga/disp_flag.sv"
+set file "$origin_dir/../display_xga_ip/src/disp_flag.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/src/display_xga/disp_out.sv"
+set file "$origin_dir/../display_xga_ip/src/disp_out.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/src/display_xga/display_xga.sv"
+set file "$origin_dir/../display_xga_ip/src/display_xga.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/src/display_xga/pckgen.sv"
+set file "$origin_dir/../display_xga_ip/src/pckgen.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/src/display_xga/syncgen.sv"
+set file "$origin_dir/../display_xga_ip/src/syncgen.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
 
 # Set 'sources_1' fileset file properties for local files
-# None
+set file "axi_vip_0/axi_vip_0.xci"
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "generate_files_for_reference" -value "0" -objects $file_obj
+set_property -name "registered_with_manager" -value "1" -objects $file_obj
+if { ![get_property "is_locked" $file_obj] } {
+  set_property -name "synth_checkpoint_mode" -value "Singular" -objects $file_obj
+}
+
 
 # Set 'sources_1' fileset properties
 set obj [get_filesets sources_1]
 set_property -name "dataflow_viewer_settings" -value "min_width=16" -objects $obj
 set_property -name "top" -value "display_xga_wrap" -objects $obj
-set_property -name "top_file" -value "src/display_xga/display_xga_wrap.v" -objects $obj
+set_property -name "top_file" -value "../display_xga_ip/src/display_xga_wrap.v" -objects $obj
 set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
 
 # Set 'sources_1' fileset object
@@ -307,17 +319,11 @@ if {[string equal [get_filesets -quiet sim_1] ""]} {
 # Set 'sim_1' fileset object
 set obj [get_filesets sim_1]
 set files [list \
- [file normalize "${origin_dir}/src/display_xga/xga_param.svh"] \
  [file normalize "${origin_dir}/src/display_xga_tb.sv"] \
 ]
 add_files -norecurse -fileset $obj $files
 
 # Set 'sim_1' fileset file properties for remote files
-set file "$origin_dir/src/display_xga/xga_param.svh"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sim_1] [list "*$file"]]
-set_property -name "file_type" -value "Verilog Header" -objects $file_obj
-
 set file "$origin_dir/src/display_xga_tb.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sim_1] [list "*$file"]]
@@ -330,7 +336,6 @@ set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 # Set 'sim_1' fileset properties
 set obj [get_filesets sim_1]
 set_property -name "top" -value "display_tb" -objects $obj
-set_property -name "top_auto_set" -value "0" -objects $obj
 set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
 
 # Set 'utils_1' fileset object
@@ -344,33 +349,6 @@ set obj [get_filesets utils_1]
 # Adding sources referenced in BDs, if not already added
 if { [get_files disp_fifo.xci] == "" } {
   import_files -quiet -fileset sources_1 "$origin_dir/vivado_project/display_xga_sim.srcs/sources_1/ip/disp_fifo/disp_fifo.xci"
-}
-if { [get_files xga_param.svh] == "" } {
-  import_files -quiet -fileset sources_1 "$origin_dir/src/display_xga/xga_param.svh"
-}
-if { [get_files common_constants.sv] == "" } {
-  import_files -quiet -fileset sources_1 "$origin_dir/src/display_xga/common_constants.sv"
-}
-if { [get_files disp_ctrl.sv] == "" } {
-  import_files -quiet -fileset sources_1 "$origin_dir/src/display_xga/disp_ctrl.sv"
-}
-if { [get_files disp_flag.sv] == "" } {
-  import_files -quiet -fileset sources_1 "$origin_dir/src/display_xga/disp_flag.sv"
-}
-if { [get_files disp_out.sv] == "" } {
-  import_files -quiet -fileset sources_1 "$origin_dir/src/display_xga/disp_out.sv"
-}
-if { [get_files display_xga.sv] == "" } {
-  import_files -quiet -fileset sources_1 "$origin_dir/src/display_xga/display_xga.sv"
-}
-if { [get_files pckgen.sv] == "" } {
-  import_files -quiet -fileset sources_1 "$origin_dir/src/display_xga/pckgen.sv"
-}
-if { [get_files syncgen.sv] == "" } {
-  import_files -quiet -fileset sources_1 "$origin_dir/src/display_xga/syncgen.sv"
-}
-if { [get_files display_xga_wrap.v] == "" } {
-  import_files -quiet -fileset sources_1 "$origin_dir/src/display_xga/display_xga_wrap.v"
 }
 
 
@@ -481,7 +459,6 @@ proc cr_bd_design_1 { parentCell } {
   set DISP_ON [ create_bd_port -dir I DISP_ON ]
   set ARESETN [ create_bd_port -dir I -type rst ARESETN ]
   set CLR_VBLANK [ create_bd_port -dir I CLR_VBLANK ]
-  set PCK [ create_bd_port -dir O PCK ]
   set XGA_R [ create_bd_port -dir O -from 7 -to 0 XGA_R ]
   set XGA_G [ create_bd_port -dir O -from 7 -to 0 XGA_G ]
   set XGA_VS [ create_bd_port -dir O XGA_VS ]
@@ -491,6 +468,7 @@ proc cr_bd_design_1 { parentCell } {
   set XGA_B [ create_bd_port -dir O -from 7 -to 0 XGA_B ]
   set FIFO_OVERFLOW [ create_bd_port -dir O FIFO_OVERFLOW ]
   set FIFO_UNDERFLOW [ create_bd_port -dir O FIFO_UNDERFLOW ]
+  set PCK [ create_bd_port -dir O PCK ]
 
   # Create instance: axi_vip_0, and set properties
   set axi_vip_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vip:1.1 axi_vip_0 ]
@@ -515,8 +493,8 @@ proc cr_bd_design_1 { parentCell } {
   connect_bd_intf_net -intf_net display_xga_wrap_0_M_AXI [get_bd_intf_pins axi_vip_0/S_AXI] [get_bd_intf_pins display_xga_wrap_0/M_AXI]
 
   # Create port connections
-  connect_bd_net -net ACLK_0_1 [get_bd_ports ACLK] [get_bd_pins axi_vip_0/aclk] [get_bd_pins display_xga_wrap_0/ACLK]
-  connect_bd_net -net ARESETN_0_1 [get_bd_ports ARESETN] [get_bd_pins axi_vip_0/aresetn] [get_bd_pins display_xga_wrap_0/ARESETN]
+  connect_bd_net -net ACLK_0_1 [get_bd_ports ACLK] [get_bd_pins display_xga_wrap_0/ACLK] [get_bd_pins axi_vip_0/aclk]
+  connect_bd_net -net ARESETN_0_1 [get_bd_ports ARESETN] [get_bd_pins display_xga_wrap_0/ARESETN] [get_bd_pins axi_vip_0/aresetn]
   connect_bd_net -net CLR_VBLANK_0_1 [get_bd_ports CLR_VBLANK] [get_bd_pins display_xga_wrap_0/CLR_VBLANK]
   connect_bd_net -net DISP_ADDR_0_1 [get_bd_ports DISP_ADDR] [get_bd_pins display_xga_wrap_0/DISP_ADDR]
   connect_bd_net -net DISP_ON_0_1 [get_bd_ports DISP_ON] [get_bd_pins display_xga_wrap_0/DISP_ON]
