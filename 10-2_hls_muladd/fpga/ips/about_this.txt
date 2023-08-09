@@ -1,0 +1,1 @@
+* muladd: copied from Vitis HLS project solution 4 impl/ip
