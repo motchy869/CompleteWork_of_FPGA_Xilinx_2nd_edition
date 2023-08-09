@@ -1,0 +1,1 @@
+* muladd: copied from "muladd_ip/vitis_hls_project/muladd/solution4/impl/ip"

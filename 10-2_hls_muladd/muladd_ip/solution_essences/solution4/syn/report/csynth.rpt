@@ -1,0 +1,112 @@
+
+
+================================================================
+== Synthesis Summary Report of 'muladd'
+================================================================
++ General Information: 
+    * Date:           Wed Aug  9 13:57:23 2023
+    * Version:        2023.1.1 (Build 3869133 on Jun 15 2023)
+    * Project:        muladd
+    * Solution:       solution4 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z010i-clg225-1L
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +----------------+------+------+---------+---------+----------+---------+------+----------+------+--------+----------+----------+-----+
+    |     Modules    | Issue|      | Latency | Latency | Iteration|         | Trip |          |      |        |          |          |     |
+    |     & Loops    | Type | Slack| (cycles)|   (ns)  |  Latency | Interval| Count| Pipelined| BRAM |   DSP  |    FF    |    LUT   | URAM|
+    +----------------+------+------+---------+---------+----------+---------+------+----------+------+--------+----------+----------+-----+
+    |+ muladd        |     -|  0.39|       21|  210.000|         -|       22|     -|        no|     -|  3 (3%)|  600 (1%)|  468 (2%)|    -|
+    | o muladd_loop  |     -|  7.30|       19|  190.000|         5|        1|    16|       yes|     -|       -|         -|         -|    -|
+    +----------------+------+------+---------+---------+----------+---------+------+----------+------+--------+----------+----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 8             | 64     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register  | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL      | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER      | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER    | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR    | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | ap_return | 0x10   | 32    | R      | Data signal of ap_return         |                                                                      |
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| a        | in        | int*     |
+| b        | in        | int*     |
+| return   | out       | int      |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+---------------+----------+-------------------------------------+
+| Argument | HW Interface  | HW Type  | HW Info                             |
++----------+---------------+----------+-------------------------------------+
+| a        | s_axi_control | memory   | name=a offset=64 range=64           |
+| b        | s_axi_control | memory   | name=b offset=128 range=64          |
+| return   | s_axi_control | register | name=ap_return offset=0x10 range=32 |
++----------+---------------+----------+-------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++-------------------------+-----+--------+----------+-----+--------+---------+
+| Name                    | DSP | Pragma | Variable | Op  | Impl   | Latency |
++-------------------------+-----+--------+----------+-----+--------+---------+
+| + muladd                | 3   |        |          |     |        |         |
+|   add_ln5_fu_115_p2     | -   |        | add_ln5  | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U1 | 3   |        | mul_ln6  | mul | auto   | 1       |
+|   sum_1_fu_135_p2       | -   |        | sum_1    | add | fabric | 0       |
++-------------------------+-----+--------+----------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
+  No bind storage info in design
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------+-----------------------+-----------------------------------------------------+
+| Type      | Options               | Location                                            |
++-----------+-----------------------+-----------------------------------------------------+
+| interface | s_axilite port=a      | muladd/solution4/directives.tcl:9 in muladd, a      |
+| interface | s_axilite port=b      | muladd/solution4/directives.tcl:10 in muladd, b     |
+| interface | s_axilite port=return | muladd/solution4/directives.tcl:8 in muladd, return |
+| pipeline  |                       | muladd/solution4/directives.tcl:7 in muladd         |
++-----------+-----------------------+-----------------------------------------------------+
+
+

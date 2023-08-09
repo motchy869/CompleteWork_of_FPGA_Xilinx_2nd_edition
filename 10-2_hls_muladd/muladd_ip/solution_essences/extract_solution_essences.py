@@ -5,7 +5,6 @@
 # This script copies the directives and reports from the Vitis HLS project to the git-controlled directory.
 
 import glob
-import inspect
 import os
 import pathlib
 import shutil
