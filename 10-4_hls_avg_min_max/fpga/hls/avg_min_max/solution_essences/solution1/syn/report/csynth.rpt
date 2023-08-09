@@ -1,0 +1,124 @@
+
+
+================================================================
+== Synthesis Summary Report of 'avg_min_max'
+================================================================
++ General Information: 
+    * Date:           Thu Aug 10 11:10:58 2023
+    * Version:        2023.1.1 (Build 3869133 on Jun 15 2023)
+    * Project:        avg_min_max
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z010i-clg225-1L
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+-----------+----------+-----+
+    |                  Modules                 | Issue|      | Latency | Latency | Iteration|         | Trip |          |      |    |           |          |     |
+    |                  & Loops                 | Type | Slack| (cycles)|   (ns)  |  Latency | Interval| Count| Pipelined| BRAM | DSP|     FF    |    LUT   | URAM|
+    +------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+-----------+----------+-----+
+    |+ avg_min_max                             |     -|  0.51|       21|  210.000|         -|       22|     -|        no|     -|   -|  260 (~0%)|  478 (2%)|    -|
+    | + avg_min_max_Pipeline_avg_min_max_loop  |     -|  0.51|       17|  170.000|         -|       17|     -|        no|     -|   -|   56 (~0%)|  209 (1%)|    -|
+    |  o avg_min_max_loop                      |     -|  7.30|       15|  150.000|         2|        1|    15|       yes|     -|   -|          -|         -|    -|
+    +------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+-----------+----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 32     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | avg      | 0x10   | 32    | R      | Data signal of avg               |                                                                      |
+| s_axi_control | avg_ctrl | 0x14   | 32    | R      | Control signal of avg            | 0=avg_ap_vld                                                         |
+| s_axi_control | min      | 0x40   | 32    | R      | Data signal of min               |                                                                      |
+| s_axi_control | min_ctrl | 0x44   | 32    | R      | Control signal of min            | 0=min_ap_vld                                                         |
+| s_axi_control | max      | 0x50   | 32    | R      | Data signal of max               |                                                                      |
+| s_axi_control | max_ctrl | 0x54   | 32    | R      | Control signal of max            | 0=max_ap_vld                                                         |
++---------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+--------------------------------------------------+
+| Argument | Direction | Datatype                                         |
++----------+-----------+--------------------------------------------------+
+| a        | in        | ap_fixed<16, 14, AP_RND_INF, AP_WRAP, 0> const * |
+| avg      | out       | ap_fixed<16, 14, AP_RND_INF, AP_WRAP, 0>&        |
+| min      | out       | ap_fixed<16, 14, AP_RND_INF, AP_WRAP, 0>&        |
+| max      | out       | ap_fixed<16, 14, AP_RND_INF, AP_WRAP, 0>&        |
++----------+-----------+--------------------------------------------------+
+
+* SW-to-HW Mapping
++----------+---------------+----------+------------------------------------+
+| Argument | HW Interface  | HW Type  | HW Info                            |
++----------+---------------+----------+------------------------------------+
+| a        | s_axi_control | memory   | name=a offset=32 range=32          |
+| avg      | s_axi_control | register | name=avg offset=0x10 range=32      |
+| avg      | s_axi_control | register | name=avg_ctrl offset=0x14 range=32 |
+| min      | s_axi_control | register | name=min offset=0x40 range=32      |
+| min      | s_axi_control | register | name=min_ctrl offset=0x44 range=32 |
+| max      | s_axi_control | register | name=max offset=0x50 range=32      |
+| max      | s_axi_control | register | name=max_ctrl offset=0x54 range=32 |
++----------+---------------+----------+------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++------------------------------------------+-----+--------+----------+-----+--------+---------+
+| Name                                     | DSP | Pragma | Variable | Op  | Impl   | Latency |
++------------------------------------------+-----+--------+----------+-----+--------+---------+
+| + avg_min_max                            | 0   |        |          |     |        |         |
+|  + avg_min_max_Pipeline_avg_min_max_loop | 0   |        |          |     |        |         |
+|    sum_1_fu_162_p2                       | -   |        | sum_1    | add | fabric | 0       |
+|    i_3_fu_142_p2                         | -   |        | i_3      | add | fabric | 0       |
++------------------------------------------+-----+--------+----------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
+  No bind storage info in design
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------+-----------------------+---------------------------------------------------------------+
+| Type      | Options               | Location                                                      |
++-----------+-----------------------+---------------------------------------------------------------+
+| interface | s_axilite port=a      | avg_min_max/solution1/directives.tcl:8 in avg_min_max, a      |
+| interface | s_axilite port=avg    | avg_min_max/solution1/directives.tcl:10 in avg_min_max, avg   |
+| interface | s_axilite port=max    | avg_min_max/solution1/directives.tcl:11 in avg_min_max, max   |
+| interface | s_axilite port=min    | avg_min_max/solution1/directives.tcl:9 in avg_min_max, min    |
+| interface | s_axilite port=return | avg_min_max/solution1/directives.tcl:7 in avg_min_max, return |
++-----------+-----------------------+---------------------------------------------------------------+
+
+
