@@ -1,0 +1,161 @@
+
+
+================================================================
+== Synthesis Summary Report of 'patblt'
+================================================================
++ General Information: 
+    * Date:           Thu Aug 10 21:09:08 2023
+    * Version:        2023.1.1 (Build 3869133 on Jun 15 2023)
+    * Project:        patblt
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-------------------------------------------+------+------+---------+-----------+----------+---------+--------+----------+--------+----+-----------+-----------+-----+
+    |                  Modules                  | Issue|      | Latency |  Latency  | Iteration|         |  Trip  |          |        |    |           |           |     |
+    |                  & Loops                  | Type | Slack| (cycles)|    (ns)   |  Latency | Interval|  Count | Pipelined|  BRAM  | DSP|     FF    |    LUT    | URAM|
+    +-------------------------------------------+------+------+---------+-----------+----------+---------+--------+----------+--------+----+-----------+-----------+-----+
+    |+ patblt                                   |     -|  0.00|   307210|  3.072e+06|         -|   307211|       -|        no|  4 (1%)|   -|  1359 (1%)|  1499 (2%)|    -|
+    | + patblt_Pipeline_height_loop_width_loop  |     -|  0.00|   307209|  3.072e+06|         -|   307209|       -|        no|       -|   -|  172 (~0%)|  349 (~0%)|    -|
+    |  o height_loop_width_loop                 |     -|  7.30|   307207|  3.072e+06|         9|        1|  307200|       yes|       -|   -|          -|          -|    -|
+    +-------------------------------------------+------+------+---------+-----------+----------+---------+--------+----------+--------+----+-----------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface  | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|            | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_gmem | 32 -> 32   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          | BRAM=4            |
++------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register  | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL      | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER      | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER    | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR    | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | dst_out_1 | 0x10   | 32    | W      | Data signal of dst_out           |                                                                      |
+| s_axi_control | dst_out_2 | 0x14   | 32    | W      | Data signal of dst_out           |                                                                      |
+| s_axi_control | xpos      | 0x1c   | 32    | W      | Data signal of xpos              |                                                                      |
+| s_axi_control | ypos      | 0x24   | 32    | W      | Data signal of ypos              |                                                                      |
+| s_axi_control | width     | 0x2c   | 32    | W      | Data signal of width             |                                                                      |
+| s_axi_control | height    | 0x34   | 32    | W      | Data signal of height            |                                                                      |
+| s_axi_control | color     | 0x3c   | 32    | W      | Data signal of color             |                                                                      |
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+--------------------+
+| Argument | Direction | Datatype           |
++----------+-----------+--------------------+
+| dst_out  | out       | pointer            |
+| xpos     | in        | ap_uint<10> const  |
+| ypos     | in        | ap_uint<10> const  |
+| width    | in        | ap_uint<10> const  |
+| height   | in        | ap_uint<10> const  |
+| color    | in        | ap_uint<32> const  |
++----------+-----------+--------------------+
+
+* SW-to-HW Mapping
++----------+---------------+-----------+----------+-------------------------------------+
+| Argument | HW Interface  | HW Type   | HW Usage | HW Info                             |
++----------+---------------+-----------+----------+-------------------------------------+
+| dst_out  | m_axi_gmem    | interface |          |                                     |
+| dst_out  | s_axi_control | register  | offset   | name=dst_out_1 offset=0x10 range=32 |
+| dst_out  | s_axi_control | register  | offset   | name=dst_out_2 offset=0x14 range=32 |
+| xpos     | s_axi_control | register  |          | name=xpos offset=0x1c range=32      |
+| ypos     | s_axi_control | register  |          | name=ypos offset=0x24 range=32      |
+| width    | s_axi_control | register  |          | name=width offset=0x2c range=32     |
+| height   | s_axi_control | register  |          | name=height offset=0x34 range=32    |
+| color    | s_axi_control | register  |          | name=color offset=0x3c range=32     |
++----------+---------------+-----------+----------+-------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* All M_AXI Variable Accesses
++--------------+----------+-----------------------------+-----------+--------------+------------+-------------------------------------------------+
+| HW Interface | Variable | Access Location             | Direction | Burst Status | Resolution | Problem                                         |
++--------------+----------+-----------------------------+-----------+--------------+------------+-------------------------------------------------+
+| m_axi_gmem   | dst_out  | ../cpp_src/patblt.cpp:13:60 | write     | Fail         | 214-227    | Volatile or Atomic access cannot be transformed |
++--------------+----------+-----------------------------+-----------+--------------+------------+-------------------------------------------------+
+
+    * Resolution URL: www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++-------------------------------------------+-----+--------+------------+-----+--------+---------+
+| Name                                      | DSP | Pragma | Variable   | Op  | Impl   | Latency |
++-------------------------------------------+-----+--------+------------+-----+--------+---------+
+| + patblt                                  | 0   |        |            |     |        |         |
+|   mul_10ns_10ns_20_1_1_U8                 | -   |        | mul_ln3    | mul | auto   | 0       |
+|  + patblt_Pipeline_height_loop_width_loop | 0   |        |            |     |        |         |
+|    add_ln11_1_fu_191_p2                   | -   |        | add_ln11_1 | add | fabric | 0       |
+|    add_ln11_2_fu_216_p2                   | -   |        | add_ln11_2 | add | fabric | 0       |
+|    add_ln11_fu_234_p2                     | -   |        | add_ln11   | add | fabric | 0       |
+|    add_ln13_fu_255_p2                     | -   |        | add_ln13   | add | fabric | 0       |
+|    add_ln13_1_fu_264_p2                   | -   |        | add_ln13_1 | add | fabric | 0       |
+|    add_ln13_3_fu_305_p2                   | -   |        | add_ln13_3 | add | fabric | 0       |
+|    add_ln13_2_fu_323_p2                   | -   |        | add_ln13_2 | add | fabric | 0       |
+|    x_1_fu_270_p2                          | -   |        | x_1        | add | fabric | 0       |
++-------------------------------------------+-----+--------+------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
+  No bind storage info in design
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++----------------+------------------------------------------------------------------------------------+------------------------------------------------------+
+| Type           | Options                                                                            | Location                                             |
++----------------+------------------------------------------------------------------------------------+------------------------------------------------------+
+| interface      | s_axilite port=color                                                               | patblt/solution1/directives.tcl:13 in patblt, color  |
+| interface      | m_axi depth=307200 max_write_burst_length=16 num_write_outstanding=16 port=dst_out | patblt/solution1/directives.tcl:8 in patblt, dst_out |
+| interface      | s_axilite port=height                                                              | patblt/solution1/directives.tcl:10 in patblt, height |
+| interface      | s_axilite port=return                                                              | patblt/solution1/directives.tcl:7 in patblt, return  |
+| interface      | s_axilite port=width                                                               | patblt/solution1/directives.tcl:9 in patblt, width   |
+| interface      | s_axilite port=xpos                                                                | patblt/solution1/directives.tcl:12 in patblt, xpos   |
+| interface      | s_axilite port=ypos                                                                | patblt/solution1/directives.tcl:11 in patblt, ypos   |
+| loop_tripcount | avg=240 max=480 min=1                                                              | patblt/solution1/directives.tcl:15 in patblt         |
+| loop_tripcount | avg=320 max=640 min=1                                                              | patblt/solution1/directives.tcl:16 in patblt         |
++----------------+------------------------------------------------------------------------------------+------------------------------------------------------+
+
+
