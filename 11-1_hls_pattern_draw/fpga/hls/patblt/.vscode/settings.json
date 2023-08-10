@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "iwidth",
+        "patblt",
+        "xpos",
+        "ypos"
+    ],
+    "files.associations": {
+        "*.m": "matlab",
+        "type_traits": "cpp"
+    }
+}
