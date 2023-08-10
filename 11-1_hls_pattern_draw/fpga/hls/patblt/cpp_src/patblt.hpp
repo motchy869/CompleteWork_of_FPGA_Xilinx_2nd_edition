@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <ap_int.h>
 #include "util.hpp"
 
