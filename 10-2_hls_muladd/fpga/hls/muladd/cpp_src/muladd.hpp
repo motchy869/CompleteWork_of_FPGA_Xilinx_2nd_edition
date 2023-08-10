@@ -1,3 +1,4 @@
+#pragma once
 #include <cstddef>
 
 constexpr size_t MULADD_ARRAY_LENGTH = 16;

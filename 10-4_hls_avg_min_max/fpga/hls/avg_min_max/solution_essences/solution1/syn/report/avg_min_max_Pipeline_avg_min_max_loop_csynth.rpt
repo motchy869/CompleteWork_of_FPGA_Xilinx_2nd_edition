@@ -1,0 +1,157 @@
+
+
+================================================================
+== Vitis HLS Report for 'avg_min_max_Pipeline_avg_min_max_loop'
+================================================================
+* Date:           Thu Aug 10 11:10:57 2023
+
+* Version:        2023.1.1 (Build 3869133 on Jun 15 2023)
+* Project:        avg_min_max
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z010i-clg225-1L
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  6.792 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       17|       17|  0.170 us|  0.170 us|   17|   17|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- avg_min_max_loop  |       15|       15|         2|          1|          1|    15|       yes|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+----+-------+-------+-----+
+|       Name      | BRAM_18K| DSP|   FF  |  LUT  | URAM|
++-----------------+---------+----+-------+-------+-----+
+|DSP              |        -|   -|      -|      -|    -|
+|Expression       |        -|   -|      0|    146|    -|
+|FIFO             |        -|   -|      -|      -|    -|
+|Instance         |        -|   -|      -|      -|    -|
+|Memory           |        -|   -|      -|      -|    -|
+|Multiplexer      |        -|   -|      -|     63|    -|
+|Register         |        -|   -|     56|      -|    -|
++-----------------+---------+----+-------+-------+-----+
+|Total            |        0|   0|     56|    209|    0|
++-----------------+---------+----+-------+-------+-----+
+|Available        |      120|  80|  35200|  17600|    0|
++-----------------+---------+----+-------+-------+-----+
+|Utilization (%)  |        0|   0|     ~0|      1|    0|
++-----------------+---------+----+-------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------+----------+----+---+----+------------+------------+
+    |     Variable Name    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------+----------+----+---+----+------------+------------+
+    |i_3_fu_142_p2         |         +|   0|  0|  13|           5|           1|
+    |sum_1_fu_162_p2       |         +|   0|  0|  23|          16|          16|
+    |icmp_ln11_fu_174_p2   |      icmp|   0|  0|  23|          16|          16|
+    |icmp_ln6_fu_131_p2    |      icmp|   0|  0|  14|           5|           6|
+    |icmp_ln9_fu_168_p2    |      icmp|   0|  0|  23|          16|          16|
+    |max_temp_1_fu_180_p3  |    select|   0|  0|  16|           1|          16|
+    |max_temp_2_fu_196_p3  |    select|   0|  0|  16|           1|          16|
+    |min_temp_1_fu_188_p3  |    select|   0|  0|  16|           1|          16|
+    |ap_enable_pp0         |       xor|   0|  0|   2|           1|           2|
+    +----------------------+----------+----+---+----+------------+------------+
+    |Total                 |          |   0|  0| 146|          62|         105|
+    +----------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_done_int              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_sig_allocacmp_i_2     |   9|          2|    5|         10|
+    |i_fu_64                  |   9|          2|    5|         10|
+    |max_temp_fu_60           |   9|          2|   16|         32|
+    |min_temp_fu_56           |   9|          2|   16|         32|
+    |sum_fu_52                |   9|          2|   16|         32|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    |  63|         14|   60|        120|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+----+----+-----+-----------+
+    |           Name          | FF | LUT| Bits| Const Bits|
+    +-------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                |   1|   0|    1|          0|
+    |ap_done_reg              |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |   1|   0|    1|          0|
+    |i_fu_64                  |   5|   0|    5|          0|
+    |max_temp_fu_60           |  16|   0|   16|          0|
+    |min_temp_fu_56           |  16|   0|   16|          0|
+    |sum_fu_52                |  16|   0|   16|          0|
+    +-------------------------+----+----+-----+-----------+
+    |Total                    |  56|   0|   56|          0|
+    +-------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+------------+---------------------------------------+--------------+
+|      RTL Ports      | Dir | Bits|  Protocol  |             Source Object             |    C Type    |
++---------------------+-----+-----+------------+---------------------------------------+--------------+
+|ap_clk               |   in|    1|  ap_ctrl_hs|  avg_min_max_Pipeline_avg_min_max_loop|  return value|
+|ap_rst               |   in|    1|  ap_ctrl_hs|  avg_min_max_Pipeline_avg_min_max_loop|  return value|
+|ap_start             |   in|    1|  ap_ctrl_hs|  avg_min_max_Pipeline_avg_min_max_loop|  return value|
+|ap_done              |  out|    1|  ap_ctrl_hs|  avg_min_max_Pipeline_avg_min_max_loop|  return value|
+|ap_idle              |  out|    1|  ap_ctrl_hs|  avg_min_max_Pipeline_avg_min_max_loop|  return value|
+|ap_ready             |  out|    1|  ap_ctrl_hs|  avg_min_max_Pipeline_avg_min_max_loop|  return value|
+|sum_3                |   in|   16|     ap_none|                                  sum_3|        scalar|
+|a_address0           |  out|    4|   ap_memory|                                      a|         array|
+|a_ce0                |  out|    1|   ap_memory|                                      a|         array|
+|a_q0                 |   in|   16|   ap_memory|                                      a|         array|
+|max_temp_out         |  out|   16|      ap_vld|                           max_temp_out|       pointer|
+|max_temp_out_ap_vld  |  out|    1|      ap_vld|                           max_temp_out|       pointer|
+|min_temp_out         |  out|   16|      ap_vld|                           min_temp_out|       pointer|
+|min_temp_out_ap_vld  |  out|    1|      ap_vld|                           min_temp_out|       pointer|
+|sum_out              |  out|   16|      ap_vld|                                sum_out|       pointer|
+|sum_out_ap_vld       |  out|    1|      ap_vld|                                sum_out|       pointer|
++---------------------+-----+-----+------------+---------------------------------------+--------------+
+
