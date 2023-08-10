@@ -1,5 +1,3 @@
-#include <type_traits>
-
 #include <ap_int.h>
 #include "util.hpp"
 

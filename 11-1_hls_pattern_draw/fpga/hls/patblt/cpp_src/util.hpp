@@ -1,3 +1,5 @@
+#include <type_traits>
+
 template <typename T>
 constexpr int flog2(const T x) {
     static_assert(std::is_integral<T>::value, "x must be integral type");
