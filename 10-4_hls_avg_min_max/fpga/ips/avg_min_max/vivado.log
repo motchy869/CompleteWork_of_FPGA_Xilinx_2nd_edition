@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# Vivado v2023.1.1 (64-bit)
+# SW Build 3900603 on Fri Jun 16 19:31:24 MDT 2023
+# IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
+# SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
+# Start of session at: Thu Aug 10 11:11:18 2023
+# Process ID: 2756
+# Current directory: C:/Users/motchy/Documents/GitHub/CompleteWork_of_FPGA_Xilinx_2nd_edition/10-4_hls_avg_min_max/fpga/hls/avg_min_max/vitis_hls_project/avg_min_max/solution1/impl/ip
+# Command line: vivado.exe -notrace -mode batch -source run_ippack.tcl
+# Log file: C:/Users/motchy/Documents/GitHub/CompleteWork_of_FPGA_Xilinx_2nd_edition/10-4_hls_avg_min_max/fpga/hls/avg_min_max/vitis_hls_project/avg_min_max/solution1/impl/ip/vivado.log
+# Journal file: C:/Users/motchy/Documents/GitHub/CompleteWork_of_FPGA_Xilinx_2nd_edition/10-4_hls_avg_min_max/fpga/hls/avg_min_max/vitis_hls_project/avg_min_max/solution1/impl/ip\vivado.jou
+# Running On: SurfaceLaptop3, OS: Windows, CPU Frequency: 1498 MHz, CPU Physical cores: 4, Host memory: 8155 MB
+#-----------------------------------------------------------
+Sourcing tcl script 'C:/Users/motchy/AppData/Roaming/Xilinx/Vivado/Vivado_init.tcl'
+source run_ippack.tcl -notrace
+ipx::create_core: Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 432.820 ; gain = 157.820
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.1/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Thu Aug 10 11:11:35 2023...
